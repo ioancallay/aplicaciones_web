@@ -1,3 +1,4 @@
+<?php
 /*
 1. Instalación de PHP:
 - Instala un entorno de desarrollo local para PHP utilizando XAMPP, WAMP, MAMP o LAMP.
@@ -26,7 +27,7 @@ e. Creación de un Array:
 - Define un arreglo con al menos cinco elementos.
 - Muestra un elemento específico del arreglo utilizando su índice.
 */
-<?php
+
 
 $entero = 5;
 $decimal = 10.5;
@@ -35,21 +36,18 @@ $cadena = "Hola, mundo!";
 $booleano = true;
 $arreglo = ["Elemento 1", "Elemento 2", "Elemento 3", "Elemento 4", "Elemento 5"];
 
-echo "Variables declaradas correctamente.\n";
+echo "Variables declaradas correctamente";
 
-echo "Suma de enteros: " . ($entero + $decimal) . "\n";
+echo "<br>Suma de enteros: " . ($entero + $decimal);
 
-echo "Concatenación de cadenas: " . ($cadena . " " . $doble) . "\n";
+echo "<br>Concatenación de cadenas: " . ($cadena . " " . $doble);
 
-echo "Longitud de la cadena: " . strlen($cadena) . "\n";
+echo "<br>Longitud de la cadena: " . strlen($cadena);
 
 if ($booleano) {
-    echo "La variable booleana es true.\n";
+    echo "<br>La variable booleana es true";
 } else {
-    echo "La variable booleana es false.\n";
+    echo "<br>La variable booleana es false";
 }
 
-echo "Elemento del arreglo: " . $arreglo[2] . "\n";
-
-
-?>
+echo "<br>Elemento del arreglo: " . $arreglo[2];
