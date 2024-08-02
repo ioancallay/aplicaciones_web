@@ -4,8 +4,8 @@ class ClaseConectar
 {
     public $conexion;
     protected $db;
-    private $db_user = "root";
-    private $db_password = "";
+    private $db_user = "iancallay";
+    private $db_password = "GE]i41_44vilPE@n";
     private $db_host = "localhost";
     private $db_name = "sexto";
 
@@ -14,7 +14,7 @@ class ClaseConectar
         $this->conexion = mysqli_connect($this->db_host, $this->db_user, $this->db_password, $this->db_name);
         mysqli_query($this->conexion, "SET NAMES 'utf8'");
 
-        if (!$this->conexion->connect_error) {
+        if ($this->conexion->connect_error) {
             die("No se pudo conectar al servidor: " . $this->conexion->connect_error);
         }
 
