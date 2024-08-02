@@ -12,14 +12,11 @@ class Alumnos
         $statement = "SELECT * FROM alumnos";
         $datos = mysqli_query($con, $statement);
         // $datos = $con->query($statement);
-
         $con->close();
-
-        print_r($datos);
-        // return $datos;
+        return $datos;
     }
 
-    public function getAlumnosPorID($id)
+    public function getAlumnoPorID($id)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
