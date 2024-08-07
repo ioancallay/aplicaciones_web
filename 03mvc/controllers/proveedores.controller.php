@@ -6,17 +6,15 @@ $proveedores = new Proveedores();
 switch ($_GET['op']) {
 
     case "getProveedores":
-        $datos = array();
         $datos = $proveedores->getProveedores();
         while ($row = mysqli_fetch_assoc($datos)) {
-            $proveedores[] = $row;
+            $todos[] = $row;
         }
-        echo json_encode($proveedores);
+        echo json_encode($todos);
 
         break;
     case "getProveedorPorID":
         $idProveedores  = $_POST['idProveedores '];
-        $datos = array();
         $datos = $proveedores->getProveedorPorID($idProveedores);
         $res = mysqli_fetch_assoc($datos);
         echo json_encode($res);
