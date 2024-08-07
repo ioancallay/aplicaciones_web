@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(1);
 require_once("../config/conexion.php");
 
 class Alumnos
@@ -20,7 +20,7 @@ class Alumnos
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $statement = "SELECT * FROM alumnos WHERE id = $id";
+        $statement = "SELECT * FROM alumnos WHERE IdAlumno = $id";
         $datos = mysqli_query($con, $statement);
         // $datos = $con->query($statement);
         $con->close();
@@ -31,7 +31,7 @@ class Alumnos
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $statement = "INSERT INTO alumnos (nombre, apellido, edad) VALUES ('$nombre', '$apellido', $edad)";
+        $statement = "INSERT INTO alumnos (Nombre, Apellido, Edad) VALUES ('$nombre', '$apellido', $edad)";
         $datos = mysqli_query($con, $statement);
         // $datos = $con->query($statement);
         $con->close();
@@ -42,7 +42,7 @@ class Alumnos
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $statement = "UPDATE alumnos SET nombre = '$nombre', apellido = '$apellido', edad = $edad WHERE id = $id";
+        $statement = "UPDATE alumnos SET Nombre = '$nombre', Apellido = '$apellido', Edad = $edad WHERE IdAlumno = $id";
         $datos = mysqli_query($con, $statement);
         // $datos = $con->query($statement);
         $con->close();
@@ -53,7 +53,7 @@ class Alumnos
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
-        $statement = "DELETE FROM alumnos WHERE id = $id";
+        $statement = "DELETE FROM alumnos WHERE IdAlumno = $id";
         $datos = mysqli_query($con, $statement);
         // $datos = $con->query($statement);
         $con->close();

@@ -8,11 +8,11 @@ switch ($_GET["op"]) {
     case "getAlumnos":
         $datos = $alumnos->getAlumnos();
         while ($row = mysqli_fetch_assoc($datos)) {
-            $todos = $row;
+            $todos[] = $row;
         }
         echo json_encode($todos);
-
         break;
+
     case "getAlumnoPorID":
         $id = $_GET["id"];
         $datos = $alumnos->getAlumnoPorID($id);

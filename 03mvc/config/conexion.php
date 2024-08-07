@@ -10,7 +10,7 @@ class ClaseConectar
     // private $db_password = "";
     private $db_user = "iancallay";
     private $db_password = "GE]i41_44vilPE@n";
-    private $db_name = "sexto";
+    private $db_name = "3mvc";
 
     public function ProcedimientoConectar()
     {

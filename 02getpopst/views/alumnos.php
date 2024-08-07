@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" data-bs-toogle="modal" data-bs-target="#modal">Nuevo alumno</button>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Nuevo alumno</button>
             </div>
         </div>
     </div>
@@ -30,7 +30,41 @@
                 <th>Acciones</th>
             </tr>
         </thead>
+        <tbody id="dataAlumnos" name="dataAlumnos"></tbody>
     </table>
+
+    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Alumno</h5>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="" id="frm_alumnos">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Nombre">Nombre:</label>
+                            <input type="text" class="form-control" name="Nombre" id="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="Apellido">Apellido:</label>
+                            <input type="text" class="form-control" name="Apellido" id="Apellido">
+                        </div>
+                        <div class="form-group">
+                            <label for="Edad">Edad:</label>
+                            <input type="text" class="form-control" name="Edad" id="Edad">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="./alumnos.js"></script>
 
 </html>
