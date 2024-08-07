@@ -33,7 +33,10 @@ class Alumnos
         $con = $con->ProcedimientoConectar();
         $statement = "INSERT INTO alumnos (Nombre, Apellido, Edad) VALUES ('$nombre', '$apellido', $edad)";
         $datos = mysqli_query($con, $statement);
-        // $datos = $con->query($statement);
+        if(!$datos){
+            echo "Error al insertar alumno: " . mysqli_error($con);
+        }
+        // $datos = $con->query($statement
         $con->close();
         return $datos;
     }
