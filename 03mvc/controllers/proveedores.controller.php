@@ -1,19 +1,20 @@
 <?php
 
+require_once('../models/proveedores.model.php');
 $proveedores = new Proveedores();
 
 switch ($_GET['op']) {
 
-    case 'getProveedores':
+    case "getProveedores":
         $datos = array();
         $datos = $proveedores->getProveedores();
         while ($row = mysqli_fetch_assoc($datos)) {
             $proveedores[] = $row;
         }
-        echo json_encode($datos);
+        echo json_encode($proveedores);
 
         break;
-    case 'getProveedorPorID':
+    case "getProveedorPorID":
         $idProveedores  = $_POST['idProveedores '];
         $datos = array();
         $datos = $proveedores->getProveedorPorID($idProveedores);
@@ -21,7 +22,7 @@ switch ($_GET['op']) {
         echo json_encode($res);
         break;
 
-    case 'insertProveedor':
+    case "insertProveedor":
         $Nombre_Empresa = $_POST['Nombre_Empresa'];
         $Direccion = $_POST['Direccion'];
         $Telefono = $_POST['Telefono'];
@@ -33,7 +34,7 @@ switch ($_GET['op']) {
 
         break;
 
-    case 'updateProveedor':
+    case "updateProveedor":
         $idProveedores = $_POST['idProveedores'];
         $Nombre_Empresa = $_POST['Nombre_Empresa'];
         $Direccion = $_POST['Direccion'];

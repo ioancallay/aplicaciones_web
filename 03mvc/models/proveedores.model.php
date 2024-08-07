@@ -2,7 +2,6 @@
 
 require_once('../config/conexion.php');
 
-
 class Proveedores
 {
     //TODO: Implementar los metodos de la clase Proveedores
