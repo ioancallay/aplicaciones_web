@@ -3,7 +3,9 @@ $().ready(() => {
 });
 
 var cargaTabla = () => {
-  $.get("../controllers/proveedores.controller.php?op=getProveedores", (listProveedores) => {
+  $.get(
+    "../controllers/proveedores.controller.php?op=getProveedores",
+    (listProveedores) => {
       var html = "";
       console.log(listProveedores);
       listProveedores = JSON.parse(listProveedores);
@@ -14,7 +16,8 @@ var cargaTabla = () => {
                   <td>${proveedor.Nombre_Empresa}</td>
                   <td>${proveedor.Direccion}</td>
                   <td>${proveedor.Telefono}</td>
-                  <td><button class="btn btn-sm btn-primary">Editar</button> <button class="btn btn-sm btn-danger">Eliminar</button></td>
+                  <td><button class="btn btn-sm btn-primary">Editar</button>
+                  <button class="btn btn-sm btn-danger">Eliminar</button></td>
                   </tr>
                   `;
       });

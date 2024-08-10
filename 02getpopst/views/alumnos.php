@@ -44,15 +44,15 @@
                 <form id="frm_alumnos">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="">Nombre</label>
+                            <label for="Nombre">Nombre</label>
                             <input type="text" class="form-control" name="Nombre" id="Nombre">
                         </div>
                         <div class="form-group">
-                            <label for="">Apellidos</label>
+                            <label for="Apellido">Apellidos</label>
                             <input type="text" class="form-control" name="Apellido" id="Apellido">
                         </div>
                         <div class="form-group">
-                            <label for="">Edad</label>
+                            <label for="Edad">Edad</label>
                             <input type="text" class="form-control" name="Edad" id="Edad">
                         </div>
                     </div>
