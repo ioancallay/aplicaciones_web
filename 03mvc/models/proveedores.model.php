@@ -4,8 +4,8 @@ require_once('../config/conexion.php');
 
 class Proveedores
 {
-    //TODO: Implementar los metodos de la clase Proveedores
 
+    //TODO: Implementar los metodos de la clase Proveedores
     public function getProveedores() //TODO: Implementar el metodo getProveedores
     {
         $con = new ClaseConectar();
@@ -16,6 +16,7 @@ class Proveedores
         return $datos;
     }
 
+    //TODO: 
     public function getProveedorPorID($idProveedores) //TODO: Implementar el metodo getProveedorPorID
     {
         $con = new ClaseConectar();
@@ -32,6 +33,7 @@ class Proveedores
             $con = new ClaseConectar();
             $con = $con->ProcedimientoConectar();
             $statement = "INSERT INTO proveedores (Nombre_Empresa, Direccion, Telefono, Contacto_Empresa, Telefono_Contacto) VALUES ('$Nombre_Empresa', '$Direccion', '$Telefono', '$Contacto_Empresa', '$Telefono_Contacto')";
+            echo $statement;
             if (mysqli_query($con, $statement)) {
                 return $con->insert_id;
             } else {

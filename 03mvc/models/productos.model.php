@@ -35,7 +35,6 @@ class Productos
             $con = new ClaseConectar();
             $con = $con->ProcedimientoConectar();
             $cadena = "INSERT INTO productos (Codigo_Barras, Nombre_Producto, Graba_IVA) VALUES ('$Codigo_Barras', '$Nombre_Producto', $Graba_IVA)";
-            echo $cadena;
             if (mysqli_query($con, $cadena)) {
                 return $con->insert_id;
             } else {

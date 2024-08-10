@@ -54,31 +54,31 @@
                     <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="" id="frm_alumnos">
+                <form action="" id="frm_proveedores">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="Nombre">Nombre Empresa:</label>
+                            <label for="Nombre_Empresa">Nombre Empresa:</label>
                             <input type="text" class="form-control" name="Nombre_Empresa" id="Nombre_Empresa">
                         </div>
                         <div class="form-group">
-                            <label for="Apellido">Direccion:</label>
+                            <label for="Direccion">Direccion:</label>
                             <input type="text" class="form-control" name="Direccion" id="Direccion">
                         </div>
                         <div class="form-group">
-                            <label for="Edad">Telefono:</label>
+                            <label for="Telefono">Telefono:</label>
                             <input type="text" class="form-control" name="Telefono" id="Telefono">
                         </div>
                         <div class="form-group">
-                            <label for="Edad">Contacto Empresa:</label>
+                            <label for="Contacto_Empresa">Contacto Empresa:</label>
                             <input type="text" class="form-control" name="Contacto_Empresa" id="Contacto_Empresa">
                         </div>
                         <div class="form-group">
-                            <label for="Edad">Telefono Contacto:</label>
-                            <input type="text" class="form-control" name="Telefono Contacto" id="Telefono Contacto">
+                            <label for="Telefono_Contacto">Telefono Contacto:</label>
+                            <input type="text" class="form-control" name="Telefono_Contacto" id="Telefono_Contacto">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
                         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </form>

@@ -8,7 +8,7 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once('../models/proveedores.models.php');
+require_once('../models/proveedores.model.php');
 error_reporting(0);
 $proveedores = new Proveedores();
 
@@ -20,8 +20,8 @@ switch ($_GET['op']) {
             $todos[] = $row;
         }
         echo json_encode($todos);
-
         break;
+
     case "getProveedorPorID":
         $idProveedores  = $_POST['idProveedores '];
         $datos = $proveedores->getProveedorPorID($idProveedores);
@@ -37,7 +37,6 @@ switch ($_GET['op']) {
         $Telefono_Contacto = $_POST['Telefono_Contacto'];
         $datos = $proveedores->insertProveedor($Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto);
         echo json_encode($datos);
-
         break;
 
     case "updateProveedor":

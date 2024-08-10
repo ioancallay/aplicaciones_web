@@ -8,7 +8,7 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once('../models/clientes.models.php');
+require_once('../models/clientes.model.php');
 error_reporting(0);
 $clientes = new Clientes();
 

@@ -8,11 +8,12 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once('../models/productos.models.php');
+require_once('../models/productos.model.php');
 error_reporting(0);
 $productos = new Productos();
 
 switch ($_GET["op"]) {
+    
     case 'getProductos':
         $datos = $productos->getProductos();
         while ($row = mysqli_fetch_assoc($datos)) {

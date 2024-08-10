@@ -1,8 +1,14 @@
+var init = () => {
+  $("#frm_proveedores").on("submit", (e) => {
+    crear_editar(e);
+  });
+};
+
 $().ready(() => {
-  cargaTabla();
+  cargarProveedores();
 });
 
-var cargaTabla = () => {
+var cargarProveedores = () => {
   $.get(
     "../controllers/proveedores.controller.php?op=getProveedores",
     (listProveedores) => {
@@ -25,3 +31,25 @@ var cargaTabla = () => {
     }
   );
 };
+
+var crear_editar = (e) => {
+  e.preventDefault();
+  console.log("proveedores");
+  var formData = new FormData($("#frm_proveedores")[0]);
+  console.log(formData);
+  $.ajax({
+    url: "../controllers/proveedores.controller.php?op=insertProveedor",
+    type: "POST",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (datos) {
+      console.log(datos);
+      $("#frm_proveedores")[0].reset();
+      $("#modal").modal("hide");
+      cargarProveedores();
+    },
+  });
+};
+
+init();
