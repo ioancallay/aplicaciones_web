@@ -32,19 +32,19 @@ var guardaryeditar = (e) => {
   e.preventDefault();
   var formData = new FormData($("#frm_alumnos")[0]);
   console.log(formData);
-  // $.ajax({
-  //   url: "../controllers/alumnos.controller.php?op=insertarAlumno",
-  //   type: "POST",
-  //   data: formData,
-  //   contentType: false,
-  //   processData: false,
-  //   success: function (datos) {
-  //     console.log(datos);
-  //     $("#frm_alumnos")[0].reset();
-  //     $("#modal").modal("hide");
-  //     cargaTabla();
-  //   },
-  // });
+  $.ajax({
+    url: "../controllers/alumnos.controller.php?op=insertarAlumno",
+    type: "POST",
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (datos) {
+      console.log(datos);
+      $("#frm_alumnos")[0].reset();
+      $("#modal").modal("hide");
+      cargaTabla();
+    },
+  });
 };
 
 init();
