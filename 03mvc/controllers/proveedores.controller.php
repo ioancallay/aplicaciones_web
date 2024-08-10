@@ -35,7 +35,6 @@ switch ($_GET['op']) {
         $Telefono = $_POST['Telefono'];
         $Contacto_Empresa = $_POST['Contacto_Empresa'];
         $Telefono_Contacto = $_POST['Telefono_Contacto'];
-        $datos = array();
         $datos = $proveedores->insertProveedor($Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto);
         echo json_encode($datos);
 
@@ -48,14 +47,12 @@ switch ($_GET['op']) {
         $Telefono = $_POST['Telefono'];
         $Contacto_Empresa = $_POST['Contacto_Empresa'];
         $Telefono_Contacto = $_POST['Telefono_Contacto'];
-        $datos = array();
         $datos = $proveedores->updateProveedor($idProveedores, $Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto);
         echo json_encode($datos);
         break;
 
     case 'deleteProveedor':
         $idProveedores = $_POST['idProveedores'];
-        $datos = array();
         $datos = $proveedores->deleteProveedor($idProveedores);
         echo json_encode($datos);
         break;
