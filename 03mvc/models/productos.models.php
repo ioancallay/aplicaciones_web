@@ -12,6 +12,7 @@ class Productos
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM productos";
         $resultado = mysqli_query($con, $cadena);
+        $con->close();
         return $resultado;
     }
 
@@ -22,17 +23,19 @@ class Productos
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM productos WHERE idProductos=$idProductos";
         $resultado = mysqli_query($con, $cadena);
+        $con->close();
         return $resultado;
     }
 
     //TODO: Metodo para insertar un producto
-    public function insertProducto($Codigo_Barras, $Nombre_Producto, $Grava_IVA)
+    public function insertProducto($Codigo_Barras, $Nombre_Producto, $Graba_IVA)
     {
 
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoConectar();
-            $cadena = "INSERT INTO productos (Codigo_Barras, Nombre_Producto, Grava_IVA) VALUES ('$Codigo_Barras', $Nombre_Producto, $Grava_IVA)";
+            $cadena = "INSERT INTO productos (Codigo_Barras, Nombre_Producto, Graba_IVA) VALUES ('$Codigo_Barras', '$Nombre_Producto', $Graba_IVA)";
+            echo $cadena;
             if (mysqli_query($con, $cadena)) {
                 return $con->insert_id;
             } else {
@@ -46,12 +49,12 @@ class Productos
     }
 
     //TODO: Metodo para actualizar un producto
-    public function updateProducto($idProductos, $Codigo_Barras, $Nombre_Producto, $Grava_IVA)
+    public function updateProducto($idProductos, $Codigo_Barras, $Nombre_Producto, $Graba_IVA)
     {
         try {
             $con = new ClaseConectar();
             $con = $con->ProcedimientoConectar();
-            $cadena = "UPDATE productos SET Codigo_Barras='$Codigo_Barras', Nombre_Producto=$Nombre_Producto, Grava_IVA=$Grava_IVA WHERE idProductos=$idProductos";
+            $cadena = "UPDATE productos SET Codigo_Barras='$Codigo_Barras', Nombre_Producto=$Nombre_Producto, Graba_IVA=$Graba_IVA WHERE idProductos=$idProductos";
             if (mysqli_query($con, $cadena)) {
                 return $idProductos;
             } else {

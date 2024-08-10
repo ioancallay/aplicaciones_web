@@ -1,9 +1,7 @@
 <?php
 
-require_once('../config/conexion.php');
+$foo = 5;
 
-$test = new ClaseConectar();
+$bar = "foo";
 
-
-$datos = $test->ProcedimientoConectar();
-var_dump($datos);
+echo $$bar;

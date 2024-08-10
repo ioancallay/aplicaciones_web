@@ -13,16 +13,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Tienda PHP</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="clientes.php">Clientes</a>
+                    <a class="nav-link active" href="clientes.php">Clientes</a>
                     <a class="nav-link" href="productos.php">Productos</a>
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </div>
             </div>
         </div>
@@ -30,7 +29,7 @@
     <div class="container mt-2">
         <div class="row">
             <div class="col-md-2">
-                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Nuevo proveedor</button>
+                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modal">Nuevo cliente</button>
             </div>
         </div>
     </div>
@@ -38,48 +37,50 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Edad</th>
+                <th>Nombres</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Cedula</th>
+                <th>Correo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody id="tableProveedores" name="tableProveedores"></tbody>
+        <tbody id="tableClientes" name="tableClientes"></tbody>
     </table>
 
     <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Proveedores</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Clientes</h5>
                     <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form action="" id="frm_alumnos">
+                <form action="" id="frm_clientes">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="Nombre">Nombre Empresa:</label>
-                            <input type="text" class="form-control" name="Nombre_Empresa" id="Nombre_Empresa">
+                            <label for="Nombres">Nombres:</label>
+                            <input type="text" class="form-control" name="Nombres" id="Nombres">
                         </div>
                         <div class="form-group">
-                            <label for="Apellido">Direccion:</label>
+                            <label for="Direccion">Direccion:</label>
                             <input type="text" class="form-control" name="Direccion" id="Direccion">
                         </div>
                         <div class="form-group">
-                            <label for="Edad">Telefono:</label>
+                            <label for="Telefono">Telefono:</label>
                             <input type="text" class="form-control" name="Telefono" id="Telefono">
                         </div>
                         <div class="form-group">
-                            <label for="Edad">Contacto Empresa:</label>
-                            <input type="text" class="form-control" name="Contacto_Empresa" id="Contacto_Empresa">
+                            <label for="Cedula">Cedula:</label>
+                            <input type="text" class="form-control" name="Cedula" id="Cedula">
                         </div>
                         <div class="form-group">
-                            <label for="Edad">Telefono Contacto:</label>
-                            <input type="text" class="form-control" name="Telefono Contacto" id="Telefono Contacto">
+                            <label for="Correo">Correo:</label>
+                            <input type="text" class="form-control" name="Correo" id="Correo">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Guardar</button>
                         <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </form>
@@ -88,6 +89,6 @@
     </div>
 
 </body>
-<script src="./proveedores.js"></script>
+<script src="./clientes.js"></script>
 
 </html>

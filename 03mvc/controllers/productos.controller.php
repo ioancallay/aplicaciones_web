@@ -9,7 +9,7 @@ if ($method == "OPTIONS") {
 }
 
 require_once('../models/productos.models.php');
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(0);
 $productos = new Productos();
 
 switch ($_GET["op"]) {

@@ -8,7 +8,7 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once('../models/proveedores.model.php');
+require_once('../models/proveedores.models.php');
 error_reporting(0);
 $proveedores = new Proveedores();
 
