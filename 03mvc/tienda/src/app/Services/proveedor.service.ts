@@ -18,9 +18,9 @@ export class ProveedorService {
   }
 
   //TODO: Metodo para eliminar un registro
-  eliminar(idProveedor: number): Observable<number> {
+  eliminarProveedor(idProveedor: number): Observable<number> {
     const formData = new FormData();
     formData.append('idProveedores', idProveedor.toString());
-    return this.lector.post<number>(this.apiurl + 'eliminar', formData);
+    return this.lector.post<number>(this.apiurl + 'deleteProveedor', formData);
   }
 }

@@ -1,5 +1,5 @@
 export interface IProveedor {
-  IdProveedor: number;
+  idProveedores: number;
   Nombre_Empresa: string;
   Direccion: string;
   Telefono: string;

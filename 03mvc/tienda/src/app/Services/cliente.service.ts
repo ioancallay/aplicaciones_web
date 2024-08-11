@@ -23,4 +23,14 @@ export class ClienteService {
     formData.append('idClientes', idClientes.toString());
     return this.http.post<number>(this.apiurl + 'deleteCliente', formData);
   }
+
+  insertCliente(cliente: ICliente): Observable<any> {
+    const formData = new FormData();
+    formData.append('Nombres', cliente.Nombres);
+    formData.append('Direccion', cliente.Direccion);
+    formData.append('Telefono', cliente.Telefono);
+    formData.append('Cedula', cliente.Cedula);
+    formData.append('Correo', cliente.Correo);
+    return this.http.post(this.apiurl + 'insertCliente', formData);
+  }
 }

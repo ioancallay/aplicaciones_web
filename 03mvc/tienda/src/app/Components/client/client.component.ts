@@ -31,4 +31,10 @@ export class ClientComponent {
       this.cargarClientes();
     });
   }
+
+  insertCliente(cliente: any) {
+    this.ServicioClientes.insertCliente(cliente).subscribe((data) => {
+      this.cargarClientes();
+    });
+  }
 }
