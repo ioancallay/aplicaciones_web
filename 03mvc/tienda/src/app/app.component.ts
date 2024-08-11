@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { IProveedor } from './Interfaces/iproveedor';
 import { ProveedorService } from './Services/proveedor.service';
+import { NavmenuComponent } from './Components/navmenu/navmenu.component';
+import { PaginationControlsComponent } from 'ngx-pagination';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

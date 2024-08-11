@@ -7,7 +7,8 @@ import { IProveedor } from '../Interfaces/iproveedor';
   providedIn: 'root',
 })
 export class ProveedorService {
-  apiurl = 'http://localhost/aplicaciones_web/03mvc/controllers/proveedores.controller.php?op=';
+  apiurl =
+    'http://localhost/aplicaciones_web/03mvc/controllers/proveedores.controller.php?op=';
   constructor(private lector: HttpClient) {}
 
   //TODO: Metodo para mostrar todos los registros

@@ -1,4 +1,3 @@
-<!-- //TODO: Agregar navegación -->
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -18,35 +17,52 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a
-              class="nav-link"
+              class="nav-link active"
               aria-current="page"
-              routerLink="/home"
-              routerLinkActive="active-link"
+              href="/home"
+              routerLink="/home" routerLinkActive="router-link-active"
               >Home</a
             >
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
-              routerLink="/client"
-              routerLinkActive="active-link"
-              >Clientes</a
+              routerLink="/client" routerLinkActive="router-link-active" 
+              >Cliente</a
             >
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
-              routerLink="/product"
-              routerLinkActive="active-link"
-              >Productos</a
+              routerLink="/product" routerLinkActive="router-link-active" 
+              >Cliente</a
             >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <a
-              class="nav-link"
-              routerLink="/proveedor"
-              routerLinkActive="active-link"
-              >Proveedores</a
+              class="nav-link disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              >Disabled</a
             >
           </li>
         </ul>
@@ -63,23 +79,3 @@
     </div>
   </nav>
 </header>
-
-<!-- //TODO: Dibuja el contenido de cada página -->
-<router-outlet></router-outlet>
-
-<!-- //TODO: Agregar el pie de página o footer -->
-<footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Tienda en Angular.</span>
-  </div>
-</footer>
-
-<!-- //TODO: Crear la paginación de las tablas -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Datatables Responsive
-    $("#datatables-responsive").DataTable({
-      responsive: true,
-    });
-  });
-</script>
