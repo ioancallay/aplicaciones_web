@@ -29,7 +29,7 @@ export class AppComponent {
   }
 
   eliminarProveedor(idProveedor: number) {
-    this.ServicioProveedor.eliminar(idProveedor).subscribe((data) => {
+    this.ServicioProveedor.eliminarProveedor(idProveedor).subscribe((data) => {
       this.cargarProveedores();
     });
   }
