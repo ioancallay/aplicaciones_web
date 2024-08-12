@@ -5,12 +5,12 @@ class ClaseConectar
     public $conexion;
     protected $db;
 
-    private $db_host = "localhost";
-    // private $db_user = "root";
-    // private $db_password = "";
-    private $db_user = "iancallay";
-    private $db_password = "GE]i41_44vilPE@n";
-    private $db_name = "3mvc";
+    private $db_host = "www.ioasystem.com";
+    private $db_user = "ioasyste_iaproject";
+    private $db_password = "d,!4{bTrbYzz";
+    // private $db_user = "iancallay";
+    // private $db_password = "GE]i41_44vilPE@n";
+    private $db_name = "ioasyste_03mvc";
 
     public function ProcedimientoConectar()
     {
