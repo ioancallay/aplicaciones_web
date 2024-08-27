@@ -53,6 +53,14 @@ const routes: Routes = [
       {
         path: 'clientes',
         loadComponent: () => import('./Components/clientes/clientes.component').then((c) => c.ClientesComponent)
+      },
+      {
+        path: 'nuevocliente',
+        loadComponent: () => import('./Components/clientes/nuevocliente/nuevocliente.component').then((c) => c.NuevoclienteComponent)
+      },
+      {
+        path: 'editarcliente/:idClientes',
+        loadComponent: () => import('./Components/clientes/nuevocliente/nuevocliente.component').then((c) => c.NuevoclienteComponent)
       }
     ]
   },
