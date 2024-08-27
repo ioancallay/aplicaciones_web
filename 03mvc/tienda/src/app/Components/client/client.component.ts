@@ -11,8 +11,16 @@ import { ICliente } from '../../Interfaces/icliente';
   styleUrl: './client.component.css',
 })
 export class ClientComponent {
+  cliente = {
+    Nombres: '',
+    Direccion: '',
+    Telefono: '',
+    Cedula: '',
+    Correo: '',
+  };
   // public page: number;
   title = 'Lista clientes';
+  clienteSeleccionado: ICliente[] = [];
   constructor(private ServicioClientes: ClienteService) {}
   ngOnInit() {
     this.cargarClientes();
@@ -32,9 +40,25 @@ export class ClientComponent {
     });
   }
 
-  insertCliente(cliente: any) {
-    this.ServicioClientes.insertCliente(cliente).subscribe((data) => {
-      this.cargarClientes();
-    });
+  guardarCliente(): void {
+    this.ServicioClientes.insertarCliente(this.cliente).subscribe(
+      (response) => {
+        console.log('Cliente insertado exitosamente:', response);
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Error al insertar el cliente:', error);
+      }
+    );
+  }
+
+  resetForm(): void {
+    this.cliente = {
+      Nombres: '',
+      Direccion: '',
+      Telefono: '',
+      Cedula: '',
+      Correo: '',
+    };
   }
 }

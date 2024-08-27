@@ -33,7 +33,6 @@ class Proveedores
             $con = new ClaseConectar();
             $con = $con->ProcedimientoConectar();
             $statement = "INSERT INTO proveedores (Nombre_Empresa, Direccion, Telefono, Contacto_Empresa, Telefono_Contacto) VALUES ('$Nombre_Empresa', '$Direccion', '$Telefono', '$Contacto_Empresa', '$Telefono_Contacto')";
-            echo $statement;
             if (mysqli_query($con, $statement)) {
                 return $con->insert_id;
             } else {
