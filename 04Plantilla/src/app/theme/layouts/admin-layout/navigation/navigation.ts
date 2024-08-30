@@ -93,6 +93,14 @@ export const NavigationItems: NavigationItem[] = [
         classes: 'nav-item',
         url: '/productos',
         icon: 'ant-design'
+      },
+      {
+        id: 'facturas',
+        title: 'Facturas',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/facturas',
+        icon: 'ant-design'
       }
     ]
   },

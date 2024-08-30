@@ -6,7 +6,7 @@ class Productos
 {
 
     //TODO: Metodo que trae la lista de todos los productos
-    public function getProductos()
+    public function todos()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
@@ -17,7 +17,7 @@ class Productos
     }
 
     //TODO: Meetodo para traer un solo producto por su Id
-    public function getProductoId($idProductos)
+    public function uno($idProductos)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
@@ -28,7 +28,7 @@ class Productos
     }
 
     //TODO: Metodo para insertar un producto
-    public function insertProducto($Codigo_Barras, $Nombre_Producto, $Graba_IVA)
+    public function insertar($Codigo_Barras, $Nombre_Producto, $Graba_IVA)
     {
 
         try {
@@ -48,7 +48,7 @@ class Productos
     }
 
     //TODO: Metodo para actualizar un producto
-    public function updateProducto($idProductos, $Codigo_Barras, $Nombre_Producto, $Graba_IVA)
+    public function actualizar($idProductos, $Codigo_Barras, $Nombre_Producto, $Graba_IVA)
     {
         try {
             $con = new ClaseConectar();
@@ -67,7 +67,7 @@ class Productos
     }
 
     //TODO: Metodo para eliminar el producto
-    public function deleteProducto($idProductos)
+    public function eliminar($idProductos)
     {
         try {
             $con = new ClaseConectar();

@@ -10,7 +10,7 @@
         <div class="col-md-6">
           <div class="form-group mb-3">
             <label class="form-label" for="Nombres">Nombres</label>
-            <input type="text" class="form-control" id="Nombres" placeholder="Nombres" formControlName="Nombres" />
+            <input type="text" class="form-control" placeholder="Nombres" id="Nombres" formControlName="Nombres" (blur)="cambiarLetras()" autofocus/>
             <div *ngIf="frm_Cliente.get('Nombres').invalid && frm_Cliente.get('Nombres').touched">
               <small *ngIf="frm_Cliente.get('Nombres').hasError('required')" style="color: red" class="mt-2 p-2">
                 Los nombres son requeridos
@@ -35,7 +35,14 @@
 
         <div class="form-group mb-3">
           <label class="form-label" for="Direccion">Direccion</label>
-          <input type="text" class="form-control" id="Direccion" placeholder="Direccion" formControlName="Direccion" />
+          <input
+            type="text"
+            class="form-control"
+            id="Direccion"
+            placeholder="Direccion"
+            formControlName="Direccion"
+            (blur)="cambiarLetras()"
+          />
           <div *ngIf="frm_Cliente.get('Direccion').invalid && frm_Cliente.get('Direccion').touched">
             <small *ngIf="frm_Cliente.get('Direccion').hasError('required')" style="color: red" class="mt-2 p-2">
               La dirección es requerida
@@ -44,12 +51,22 @@
         </div>
         <div class="form-group mb-3">
           <label class="form-label" for="Telefono">Telefono</label>
-          <input type="text" class="form-control" id="Telefono" placeholder="Telefono" formControlName="Telefono" />
-          <div *ngIf="frm_Cliente.get('Telefono').invalid && frm_Cliente.get('Telefono').touched">
+          <input type="text" class="form-control" id="Telefono" placeholder="Telefono" formControlName="Telefono" maxlength="10" />
+          <!-- <div *ngIf="frm_Cliente.get('Telefono').invalid && frm_Cliente.get('Telefono').touched">
             <small *ngIf="frm_Cliente.get('Telefono').hasError('required')" style="color: red" class="mt-2 p-2">
               El número de teléfono es requerido
             </small>
-          </div>
+          </div> -->
+          @if (frm_Cliente.get('Telefono').invalid && frm_Cliente.get('Telefono').touched) {
+            <div>
+              @if (frm_Cliente.get('Telefono').hasError('required')) {
+                <small style="color: red">El número de teléfono es requerido</small>
+              }
+              @if (frm_Cliente.get('Telefono').hasError('minlength')) {
+                <small style="color: red">El número de telefono ingresado es incorrecto</small>
+              }
+            </div>
+          }
         </div>
         <div class="form-group mb-3">
           <label class="form-label" for="Correo">Correo</label>
@@ -60,7 +77,25 @@
           </div>
         </div>
         <div class="d-grid mt-3">
-          <button type="submit" class="btn btn-outline-primary" [disabled]="frm_Cliente.invalid">{{ btn_save }}</button>
+          <button type="submit" class="btn btn-outline-primary" [disabled]="frm_Cliente.invalid">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-checks"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#2c3e50"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 12l5 5l10 -10" />
+              <path d="M2 12l5 5m5 -5l5 -5" />
+            </svg>
+            {{ btn_save }}
+          </button>
         </div>
       </div>
     </form>

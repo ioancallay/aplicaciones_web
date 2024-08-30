@@ -30,7 +30,7 @@ export class NuevoproveedorComponent implements OnInit {
   ngOnInit(): void {
     this.idProveedores = parseInt(this.rutas.snapshot.paramMap.get('idProveedores'));
     if (this.idProveedores > 0) {
-      this.ProveedorServicio.getProveedorPorID(this.idProveedores).subscribe((proveedor) => {
+      this.ProveedorServicio.uno(this.idProveedores).subscribe((proveedor) => {
         this.Nombre_Empresa = proveedor.Nombre_Empresa;
         this.Direccion = proveedor.Direccion;
         this.Telefono = proveedor.Telefono;
@@ -40,10 +40,6 @@ export class NuevoproveedorComponent implements OnInit {
         this.btn_save = 'Actualizar proveedor';
       });
     }
-  }
-
-  limpiarCaja() {
-    alert('Muestra');
   }
 
   grabar() {
@@ -57,10 +53,7 @@ export class NuevoproveedorComponent implements OnInit {
     };
 
     if (this.idProveedores == 0 || isNaN(this.idProveedores)) {
-      this.ProveedorServicio.insertarProveedor(iproveedor).subscribe((respuesta) => {
-        // respuesta > 1 ? alert('Grabado con exito') : alert('Error al grabar');
-        // console.log(respuesta);
-
+      this.ProveedorServicio.insertar(iproveedor).subscribe((respuesta) => {
         if (parseInt(respuesta) > 1) {
           alert('Grabado con exito');
           this.navegacion.navigate(['/proveedores']);
@@ -70,7 +63,7 @@ export class NuevoproveedorComponent implements OnInit {
       });
     } else {
       iproveedor.idProveedores = this.idProveedores;
-      this.ProveedorServicio.actualizarProveedor(iproveedor).subscribe((respuesta) => {
+      this.ProveedorServicio.actualizar(iproveedor).subscribe((respuesta) => {
         if (parseInt(respuesta) > 1) {
           alert('Actualizado con exito');
           this.navegacion.navigate(['/proveedores']);

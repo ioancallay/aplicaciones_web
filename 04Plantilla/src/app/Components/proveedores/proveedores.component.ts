@@ -13,8 +13,6 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
   styleUrl: './proveedores.component.scss'
 })
 export class ProveedoresComponent {
-  title = 'Lista proveedores';
-
   listaProveedores: IProveedores[] = [];
   constructor(private ServicioProveedores: ProveedoresService) {}
 
@@ -23,14 +21,13 @@ export class ProveedoresComponent {
   }
 
   cargarProveedores() {
-    this.ServicioProveedores.getProveedores().subscribe((data) => {
+    this.ServicioProveedores.todos().subscribe((data) => {
       this.listaProveedores = data;
     });
   }
 
-  eliminarProveedor(idProveedor: number) {
-    this.ServicioProveedores.eliminarProveedor(idProveedor).subscribe((data) => {
-      console.log(data);
+  eliminar(idProveedor: number) {
+    this.ServicioProveedores.eliminar(idProveedor).subscribe((data) => {
       this.cargarProveedores();
     });
   }

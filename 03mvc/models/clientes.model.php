@@ -6,7 +6,7 @@ class Clientes
 {
 
     //TODO: Metodo para obtener la lista de clientes
-    public function getClientes()
+    public function todos()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
@@ -17,7 +17,7 @@ class Clientes
     }
 
     //TODO: Metodo para obtener un cliente por su id
-    public function getClienteId($idClientes)
+    public function uno($idClientes)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
@@ -28,7 +28,7 @@ class Clientes
     }
 
     //TODO: Metodo para insertar un cliente
-    public function insertCliente($Nombres, $Direccion, $Telefono, $Cedula, $Correo)
+    public function insertar($Nombres, $Direccion, $Telefono, $Cedula, $Correo)
     {
         try {
             $con = new ClaseConectar();
@@ -47,7 +47,7 @@ class Clientes
     }
 
     //TODO: Metodo para actualizar clientes
-    public function updateCliente($idClientes, $Nombres, $Direccion, $Telefono, $Cedula, $Correo)
+    public function actualizar($idClientes, $Nombres, $Direccion, $Telefono, $Cedula, $Correo)
     {
         try {
             $con = new ClaseConectar();
@@ -66,7 +66,7 @@ class Clientes
     }
 
     //TODO: Metodo para eliminar un cliente
-    public function deleteCliente($idClientes)
+    public function eliminar($idClientes)
     {
         try {
             $con = new ClaseConectar();

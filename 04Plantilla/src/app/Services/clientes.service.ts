@@ -12,35 +12,34 @@ export class ClientesService {
   constructor(private http: HttpClient) {}
 
   //TODO: Metodo para mostrar todos los registros
-  getClientes(): Observable<IClientes[]> {
-    console.log(this.apiurl + 'getClientees');
-    return this.http.get<IClientes[]>(this.apiurl + 'getClientes');
+  todos(): Observable<IClientes[]> {
+    return this.http.get<IClientes[]>(this.apiurl + 'todos');
   }
 
-  getClientePorID(idClientes: number): Observable<IClientes> {
+  uno(idClientes: number): Observable<IClientes> {
     const formData = new FormData();
     formData.append('idClientes', idClientes.toString());
-    return this.http.post<IClientes>(this.apiurl + 'getClientePorID', formData);
+    return this.http.post<IClientes>(this.apiurl + 'uno', formData);
   }
 
   //TODO: Metodo para eliminar un registro
-  eliminarCliente(idClientes: number): Observable<number> {
+  eliminar(idClientes: number): Observable<number> {
     const formData = new FormData();
     formData.append('idClientes', idClientes.toString());
-    return this.http.post<number>(this.apiurl + 'deleteCliente', formData);
+    return this.http.post<number>(this.apiurl + 'eliminar', formData);
   }
 
-  insertarCliente(cliente: IClientes): Observable<string> {
+  insertar(cliente: IClientes): Observable<string> {
     const formData = new FormData();
     formData.append('Nombres', cliente.Nombres);
     formData.append('Direccion', cliente.Direccion);
     formData.append('Telefono', cliente.Telefono);
     formData.append('Cedula', cliente.Cedula);
     formData.append('Correo', cliente.Correo);
-    return this.http.post<string>(this.apiurl + 'insertCliente', formData);
+    return this.http.post<string>(this.apiurl + 'insertar', formData);
   }
 
-  actualizarCliente(cliente: IClientes): Observable<string> {
+  actualizar(cliente: IClientes): Observable<string> {
     const formData = new FormData();
     formData.append('idClientes', cliente.idClientes.toString());
     formData.append('Nombres', cliente.Nombres);
@@ -48,6 +47,6 @@ export class ClientesService {
     formData.append('Telefono', cliente.Telefono);
     formData.append('Cedula', cliente.Cedula);
     formData.append('Correo', cliente.Correo);
-    return this.http.post<string>(this.apiurl + 'updateCliente', formData);
+    return this.http.post<string>(this.apiurl + 'actualizar', formData);
   }
 }

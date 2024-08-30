@@ -1,3 +1,5 @@
+import { NuevafacturaComponent } from './Components/factura/nuevafactura/nuevafactura.component';
+import { FacturaComponent } from './Components/factura/factura.component';
 // angular import
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -61,6 +63,18 @@ const routes: Routes = [
       {
         path: 'editarcliente/:idClientes',
         loadComponent: () => import('./Components/clientes/nuevocliente/nuevocliente.component').then((c) => c.NuevoclienteComponent)
+      },
+      {
+        path: 'editarfactura/:idFactura',
+        loadComponent: () => import('./Components/factura/nuevafactura/nuevafactura.component').then((m) => m.NuevafacturaComponent)
+      },
+      {
+        path: 'nuevafactura',
+        loadComponent: () => import('./Components/factura/nuevafactura/nuevafactura.component').then((m) => m.NuevafacturaComponent)
+      },
+      {
+        path: 'facturas',
+        loadComponent: () => import('./Components/factura/factura.component').then((m) => m.FacturaComponent)
       }
     ]
   },

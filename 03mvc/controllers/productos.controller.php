@@ -13,42 +13,51 @@ error_reporting(0);
 $productos = new Productos();
 
 switch ($_GET["op"]) {
-    
-    case 'getProductos':
-        $datos = $productos->getProductos();
+
+    case 'todos':
+        $datos = array();
+        $datos = $productos->todos();
         while ($row = mysqli_fetch_assoc($datos)) {
             $todos[] = $row;
         }
         echo json_encode($todos);
         break;
 
-    case 'getProductoId':
+    case 'uno':
         $idProductos = $_POST["idProductos"];
-        $datos = $productos->getProductoId($idProductos);
+        $datos = array();
+        $datos = $productos->uno($idProductos);
         $resultado = mysqli_fetch_assoc($datos);
         echo json_encode($resultado);
         break;
 
-    case 'insertProducto':
+    case 'insertar':
         $Codigo_Barras = $_POST["Codigo_Barras"];
         $Nombre_Producto = $_POST["Nombre_Producto"];
         $Grava_IVA = $_POST["Grava_IVA"];
-        $datos = $productos->insertProducto($Codigo_Barras, $Nombre_Producto, $Grava_IVA);
+        $datos = array();
+        $datos = $productos->insertar($Codigo_Barras, $Nombre_Producto, $Grava_IVA);
         echo json_encode($datos);
         break;
 
-    case 'updateProducto':
+    case 'actualizar':
         $id = $_POST["idProductos"];
         $Codigo_Barras = $_POST["Codigo_Barras"];
         $Nombre_Producto = $_POST["Nombre_Producto"];
         $Grava_IVA = $_POST["Grava_IVA"];
-        $datos = $productos->updateProducto($idProductos, $Codigo_Barras, $Nombre_Producto, $Grava_IVA);
+        $datos = array();
+        $datos = $productos->actualizar($idProductos, $Codigo_Barras, $Nombre_Producto, $Grava_IVA);
         echo json_encode($datos);
         break;
 
-    case 'deleteProducto':
+    case 'eliminar':
         $idProductos = $_POST["idProductos"];
-        $datos = $productos->deleteProducto($idProductos);
+        $datos = array();
+        $datos = $productos->eliminar($idProductos);
         echo json_encode($datos);
+        break;
+
+    default:
+        echo json_encode(["error" => "Invalid operation."]);
         break;
 }

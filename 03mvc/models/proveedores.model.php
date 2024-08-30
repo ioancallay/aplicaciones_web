@@ -5,8 +5,8 @@ require_once('../config/conexion.php');
 class Proveedores
 {
 
-    //TODO: Implementar los metodos de la clase Proveedores
-    public function getProveedores() //TODO: Implementar el metodo getProveedores
+    //TODO: Método para mostrar todos los proveedores
+    public function todos()
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
@@ -16,8 +16,8 @@ class Proveedores
         return $datos;
     }
 
-    //TODO: 
-    public function getProveedorPorID($idProveedores) //TODO: Implementar el metodo getProveedorPorID
+    //TODO: Método para mostrar un solo proveedor
+    public function uno($idProveedores)
     {
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
@@ -26,8 +26,8 @@ class Proveedores
         $con->close();
         return $datos;
     }
-
-    public function insertProveedor($Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto) //TODO: Implementar el metodo insertProveedor
+    //TODO: Método para insertar un proveedor
+    public function insertar($Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto)
     {
         try {
             $con = new ClaseConectar();
@@ -45,7 +45,8 @@ class Proveedores
         }
     }
 
-    public function updateProveedor($idProveedores, $Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto) //TODO: Implementar el metodo updateProveedor
+    //TODO: Método para actualizar un proveedor
+    public function actualizar($idProveedores, $Nombre_Empresa, $Direccion, $Telefono, $Contacto_Empresa, $Telefono_Contacto) //TODO: Implementar el metodo updateProveedor
     {
         try {
             $con = new ClaseConectar();
@@ -63,7 +64,8 @@ class Proveedores
         }
     }
 
-    public function deleteProveedor($idProveedores) //TODO: Implementar el metodo deleteProveedor
+    //TODO: Método para eliminar un proveedor
+    public function eliminar($idProveedores)
     {
         try {
             $con = new ClaseConectar();

@@ -1,16 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  MaxLengthValidator,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators
-} from '@angular/forms';
-import { Router } from '@angular/router';
-import { kMaxLength } from 'buffer';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IClientes } from 'src/app/Interfaces/iclientes';
 import { ClientesService } from 'src/app/Services/clientes.service';
 import Swal from 'sweetalert2';
@@ -22,54 +13,118 @@ import Swal from 'sweetalert2';
   templateUrl: './nuevocliente.component.html',
   styleUrl: './nuevocliente.component.scss'
 })
-export class NuevoclienteComponent {
-  constructor(
-    private ClienteServicio: ClientesService,
-    private navegacion: Router
-  ) {}
-
+export class NuevoclienteComponent implements OnInit {
   frm_Cliente = new FormGroup({
     Nombres: new FormControl('', Validators.required),
     Direccion: new FormControl('', Validators.required),
-    Telefono: new FormControl('', Validators.required),
+    Telefono: new FormControl('', [Validators.required, Validators.minLength(9)]),
     Cedula: new FormControl('', [Validators.required, this.validadorCedulaEcuador]),
     Correo: new FormControl('', [Validators.required, Validators.email])
   });
+
   idClientes = 0;
   titulo = 'Nuevo Cliente';
   btn_save = 'Crear cliente';
+  mensaje: string;
+  btn_confirm: string;
+
+  constructor(
+    private ClienteServicio: ClientesService,
+    private navegacion: Router,
+    private ruta: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.idClientes = parseInt(this.ruta.snapshot.paramMap.get('idClientes'));
+    console.log(this.idClientes);
+
+    if (this.idClientes > 0) {
+      this.ClienteServicio.uno(this.idClientes).subscribe((uncliente) => {
+        this.frm_Cliente.controls['Nombres'].setValue(uncliente.Nombres);
+        this.frm_Cliente.controls['Direccion'].setValue(uncliente.Direccion);
+        this.frm_Cliente.controls['Telefono'].setValue(uncliente.Telefono);
+        this.frm_Cliente.controls['Cedula'].setValue(uncliente.Cedula);
+        this.frm_Cliente.controls['Correo'].setValue(uncliente.Correo);
+
+        // this.frm_Cliente.setValue({
+        //   Nombres: cliente.Nombres,
+        //   Direccion: cliente.Direccion,
+        //   Telefono: cliente.Telefono,
+        //   Cedula: cliente.Cedula,
+        //   Correo: cliente.Correo
+        // });
+        // this.frm_Cliente.patchValue({
+        //   Cedula: cliente.Cedula,
+        //   Correo: cliente.Correo,
+        //   Nombres: cliente.Nombres,
+        //   Direccion: cliente.Direccion,
+        //   Telefono: cliente.Telefono
+        // });
+        this.titulo = 'Editar Cliente';
+        this.btn_save = 'Actualizar cliente';
+      });
+    }
+  }
 
   grabar() {
     let cliente: IClientes = {
       idClientes: this.idClientes,
-      Nombres: this.frm_Cliente.controls['Nombres'].value,
-      Direccion: this.frm_Cliente.controls['Direccion'].value,
+      Nombres: this.frm_Cliente.controls['Nombres'].value.toUpperCase(),
+      Direccion: this.frm_Cliente.controls['Direccion'].value.toUpperCase(),
       Telefono: this.frm_Cliente.controls['Telefono'].value,
       Cedula: this.frm_Cliente.controls['Cedula'].value,
-      Correo: this.frm_Cliente.controls['Correo'].value
+      Correo: this.frm_Cliente.controls['Correo'].value.toLowerCase()
     };
+
+    if (this.idClientes > 0) {
+      this.mensaje = 'Desea actualizar el cliente ';
+      this.btn_confirm = 'Actualizar cliente!';
+    } else {
+      this.mensaje = 'Desea crear el cliente ';
+      this.btn_confirm = 'Crear cliente!';
+    }
+
     Swal.fire({
       title: 'Clientes',
-      text: 'Desea crear el cliente ' + this.frm_Cliente.controls['Nombres'].value,
+      text: this.mensaje + this.frm_Cliente.controls['Nombres'].value,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#blue',
+      confirmButtonColor: 'red',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Crear cliente!'
+      confirmButtonText: this.btn_confirm
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ClienteServicio.insertarCliente(cliente).subscribe((data) => {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Your work has been saved',
-            showConfirmButton: false,
-            timer: 2000
+        if (this.idClientes > 0) {
+          this.ClienteServicio.actualizar(cliente).subscribe((data) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Proceso completado',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            this.navegacion.navigate(['/clientes']);
           });
-          this.navegacion.navigate(['/clientes']);
-        });
+        } else {
+          this.ClienteServicio.insertar(cliente).subscribe((data) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Proceso completado',
+              showConfirmButton: false,
+              timer: 2000
+            });
+            this.navegacion.navigate(['/clientes']);
+          });
+        }
       }
     });
+  }
+
+  cambiarLetras() {
+    this.frm_Cliente.controls['Nombres'].setValue(this.frm_Cliente.controls['Nombres'].value.toUpperCase());
+    this.frm_Cliente.controls['Direccion'].setValue(this.frm_Cliente.controls['Direccion'].value.toUpperCase());
+    this.frm_Cliente.controls['Correo'].setValue(this.frm_Cliente.controls['Correo'].value.toLowerCase());
   }
 
   validadorCedulaEcuador(control: AbstractControl): ValidationErrors | null {

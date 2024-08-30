@@ -13,44 +13,53 @@ error_reporting(0);
 $clientes = new Clientes();
 
 switch ($_GET["op"]) {
-    case 'getClientes':
-        $datos = $clientes->getClientes();
+    case 'todos':
+        $datos = array();
+        $datos = $clientes->todos();
         while ($row = mysqli_fetch_assoc($datos)) {
             $todos[] = $row;
         }
         echo json_encode($todos);
         break;
 
-    case 'getClienteId':
+    case 'uno':
         $idClientes = $_POST["idClientes"];
-        $datos = $clientes->getClienteId($idClientes);
+        $datos = array();
+        $datos = $clientes->uno($idClientes);
         $resultado = mysqli_fetch_assoc($datos);
         echo json_encode($resultado);
         break;
 
-    case 'insertCliente':
+    case 'insertar':
         $Nombres = $_POST["Nombres"];
         $Direccion = $_POST["Direccion"];
         $Telefono = $_POST["Telefono"];
         $Cedula = $_POST["Cedula"];
         $Correo = $_POST["Correo"];
-        $respuesta = $clientes->insertCliente($Nombres, $Direccion, $Telefono, $Cedula, $Correo);
-        echo json_encode($respuesta);
+        $datos = array();
+        $datos = $clientes->insertar($Nombres, $Direccion, $Telefono, $Cedula, $Correo);
+        echo json_encode($datos);
         break;
-    case 'updateCliente':
+    case 'actualizar':
         $idClientes = $_POST["idClientes"];
         $Nombres = $_POST["Nombres"];
         $Direccion = $_POST["Direccion"];
         $Telefono = $_POST["Telefono"];
         $Cedula = $_POST["Cedula"];
         $Correo = $_POST["Correo"];
-        $respuesta = $clientes->updateCliente($idClientes, $Nombres, $Direccion, $Telefono, $Cedula, $Correo);
-        echo json_encode($respuesta);
+        $datos = array();
+        $datos = $clientes->actualizar($idClientes, $Nombres, $Direccion, $Telefono, $Cedula, $Correo);
+        echo json_encode($datos);
         break;
 
-    case 'deleteCliente':
+    case 'eliminar':
         $idClientes = $_POST["idClientes"];
-        $respuesta = $clientes->deleteCliente($idClientes);
-        echo json_encode($respuesta);
+        $datos = array();
+        $datos = $clientes->eliminar($idClientes);
+        echo json_encode($datos);
+        break;
+
+    default:
+        echo json_encode(["error" => "Invalid operation."]);
         break;
 }
